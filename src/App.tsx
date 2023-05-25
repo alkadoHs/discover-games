@@ -20,7 +20,7 @@ function App() {
         <GridItem area="sidebar">Sidebar</GridItem>
       </Show>
 
-      <GridItem area="main">
+      <GridItem area="main" px={10}>
         <GameGrid />
       </GridItem>
     </Grid>
