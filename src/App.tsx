@@ -10,22 +10,16 @@ function App() {
       }}
       gridTemplateColumns={{ lg: "200px 1fr" }}
       gap="1"
-      color="blackAlpha.700"
-      fontWeight="bold"
     >
-      <GridItem bg="orange.300" area="nav">
+      <GridItem area="nav">
         <Navbar />
       </GridItem>
 
       <Show above="lg">
-        <GridItem bg="pink.300" area="sidebar">
-          Sidebar
-        </GridItem>
+        <GridItem area="sidebar">Sidebar</GridItem>
       </Show>
 
-      <GridItem bg="green.300" area="main">
-        Main
-      </GridItem>
+      <GridItem area="main">Main</GridItem>
     </Grid>
   );
 }

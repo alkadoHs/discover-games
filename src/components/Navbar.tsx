@@ -1,22 +1,13 @@
-import { GridItem, Grid } from "@chakra-ui/react";
+import { HStack, Image } from "@chakra-ui/react";
+import logo from "../assets/logo.webp";
+import ColorModeSwitch from "./ColorModeSwitch";
 
 const Navbar = () => {
   return (
-    <Grid
-      templateAreas={`"logo searchbar toggle"`}
-      gridTemplateColumns={"100px 1fr 100px"}
-      gridTemplateRows={"auto"}
-      alignItems={"center"}
-      gap="2"
-    >
-      <GridItem fontSize={19} area="logo">
-        logo
-      </GridItem>
-
-      <GridItem area="searchbar">searchBar</GridItem>
-
-      <GridItem area="toggle">DarkMode</GridItem>
-    </Grid>
+    <HStack justify="space-between" alignItems={"center"} px={10}>
+      <Image src={logo} boxSize="60px" />
+      <ColorModeSwitch />
+    </HStack>
   );
 };
 
