@@ -23,8 +23,10 @@ interface FetchGameResponse {
 const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setLoading(true);
     let cancelToken: CancelTokenSource;
 
     cancelToken = axios.CancelToken.source();
@@ -32,10 +34,12 @@ const useGames = () => {
       .get<FetchGameResponse>("/games", { cancelToken: cancelToken.token })
       .then((res) => {
         setGames(res.data.results);
+        setLoading(false);
       })
       .catch((err) => {
         if (axios.isCancel(err)) return;
         setError(err.message);
+        setLoading(false);
       });
 
     return () => {
@@ -45,7 +49,7 @@ const useGames = () => {
     };
   }, []);
 
-  return { games, error };
+  return { games, error, isLoading };
 };
 
 export default useGames;
