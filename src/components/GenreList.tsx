@@ -18,11 +18,6 @@ interface Props {
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
 
-  const activeLink = {
-    color: "green.600",
-    fontWeight: "bold",
-  };
-
   if (error) return <Text color={"red"}>Error fetching genres</Text>;
   if (isLoading) return <Spinner />;
   return (
