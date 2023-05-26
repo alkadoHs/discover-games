@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
-import axios, { CancelTokenSource } from "axios";
+import useData from "./useData";
 
 export interface Platform {
   id: number;
@@ -15,41 +13,6 @@ export interface Game {
   metacritic: number;
 }
 
-interface FetchGameResponse {
-  count: number;
-  results: Game[];
-}
-
-const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    setLoading(true);
-    let cancelToken: CancelTokenSource;
-
-    cancelToken = axios.CancelToken.source();
-    apiClient
-      .get<FetchGameResponse>("/games", { cancelToken: cancelToken.token })
-      .then((res) => {
-        setGames(res.data.results);
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (axios.isCancel(err)) return;
-        setError(err.message);
-        setLoading(false);
-      });
-
-    return () => {
-      if (cancelToken) {
-        cancelToken.cancel("The request is cancelled due to component unmount");
-      }
-    };
-  }, []);
-
-  return { games, error, isLoading };
-};
+const useGames = () => useData<Game>("/games");
 
 export default useGames;
