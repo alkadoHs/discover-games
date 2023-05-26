@@ -11,19 +11,27 @@ function App() {
         lg: `"nav nav" "sidebar main"`,
       }}
       gridTemplateColumns={{ lg: "200px 1fr" }}
+      alignItems="start"
       gap="1"
     >
-      <GridItem area="nav">
+      <GridItem area="nav" px={{ base: 1 }}>
         <Navbar />
       </GridItem>
 
       <Show above="lg">
-        <GridItem area="sidebar">
+        <GridItem
+          area="sidebar"
+          pl={5}
+          pos="sticky"
+          top="0.5"
+          h="100dvh"
+          overflowY="auto"
+        >
           <GenreList />
         </GridItem>
       </Show>
 
-      <GridItem area="main" px={10}>
+      <GridItem area="main" px={3}>
         <GameGrid />
       </GridItem>
     </Grid>
