@@ -17,6 +17,7 @@ const GameCard = ({ game }: Props) => {
             ? getCroppedImageUrl(game.background_image)
             : game.background_image
         }
+        alt={game.name}
       />
       <CardBody>
         <Heading fontSize={"2xl"}>{game.name}</Heading>
