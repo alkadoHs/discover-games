@@ -23,7 +23,7 @@ function App() {
         base: `"nav" "main"`,
         lg: `"nav nav" "sidebar main"`,
       }}
-      gridTemplateColumns={{ lg: "220px 1fr" }}
+      gridTemplateColumns={{ lg: "240px 1fr" }}
       alignItems="start"
       gap="1"
     >
