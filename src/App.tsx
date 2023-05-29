@@ -8,6 +8,7 @@ import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import GameDrawer from "./components/Drawer";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -22,8 +23,8 @@ function App() {
   return (
     <Grid
       templateAreas={{
-        base: `"nav" "main"`,
-        lg: `"nav nav" "sidebar main"`,
+        base: `"nav" " main"`,
+        lg: `"nav nav" "sidebar  main"`,
       }}
       gridTemplateColumns={{ lg: "240px 1fr" }}
       alignItems="start"
@@ -52,7 +53,15 @@ function App() {
       </Show>
 
       <GridItem area="main" px={3}>
-        <GameHeading gameQuery={gameQuery} />
+        <Flex justify={"space-between"}>
+          <GameHeading gameQuery={gameQuery} />
+          <Show below="lg">
+            <GameDrawer
+              selectedGenre={gameQuery.genre}
+              onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            />
+          </Show>
+        </Flex>
         <Flex gap={5} py={4}>
           <PlatformSelector
             selectedPlatform={gameQuery.platform}

@@ -2,8 +2,6 @@ import { HStack, Image } from "@chakra-ui/react";
 import logo from "../assets/logo.png";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./Searchinput";
-import getCroppedImageUrl from "../services/image-url";
-
 interface Props {
   onSearch: (searchInput: string) => void;
 }
