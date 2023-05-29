@@ -41,7 +41,7 @@ export default function GameDrawer({ onSelectGenre, selectedGenre }: Props) {
           <DrawerCloseButton />
           <DrawerHeader>Games zote duniani</DrawerHeader>
 
-          <DrawerBody>
+          <DrawerBody onClick={onClose}>
             <GenreList
               onSelectGenre={onSelectGenre}
               selectedGenre={selectedGenre}
